@@ -1,1 +1,1 @@
-web: gunicorn django_todolists_app.wsgi --log-file -
+web: gunicorn mysite.wsgi --log-file -
