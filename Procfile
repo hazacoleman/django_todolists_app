@@ -1,1 +1,1 @@
-web: gunicorn harrystodolists.wsgi --log-file -
+web: gunicorn Django1stTut.wsgi --log-file -
