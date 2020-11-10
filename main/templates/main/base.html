@@ -63,10 +63,16 @@
     <div id="content", name="content", class="main">
         <div class="row justify-content-center">
             <div class="col-8">
-                <h1 class="mt-2">Coleman's To Do List</h1>
-                <hr class="mt-0 mb-4">
-                    {% block content %}
-                    {% endblock %} 
+                {% if user.is_authenticated %}
+                    <h1 class="mt-2">{{ user.get_username }}'s To Do List</h1> 
+                    <hr class="mt-0 mb-4">
+                {% else %}
+                    <h1 class="mt-2">Your To Do List</h1> 
+                    <hr class="mt-0 mb-4">
+                        
+                {% endif %}
+            {% block content %}
+            {% endblock %} 
             </div>
         </div>
     </div>
