@@ -27,7 +27,7 @@ SECRET_KEY = '&puo-a^-msjl7ut9%!t5-hw)6%k$a1+ua4dp1y&j0m^5jtbvu^'
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['harrystodolists.herokuapp.com']
+ALLOWED_HOSTS = ['harrystodolists.herokuapp.com', '127.0.0.1' ]
 
 
 # Application definition
@@ -129,7 +129,7 @@ CRISPY_TEMPLATE_PACK="bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
 
-
+LOGOUT_REDIRECT_URL = '/login'
 
 STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
 
