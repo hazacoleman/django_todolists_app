@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList, Item
 from .forms import CreateNewList
@@ -16,6 +16,7 @@ def index(response, id):
                 for item in ls.item_set.all():
                     if response.POST.get("c" + str(item.id)) == "clicked":
                         item.complete= True
+                        
                     else:
                         item.complete= False
                     item.save()
@@ -27,7 +28,11 @@ def index(response, id):
             elif response.POST.get("clear"):
                 ls.item_set.all().delete()
                 
-        
+            elif response.POST.get("delete"):
+                ls.delete()
+                return redirect("/view")
+               
+           
         return render(response, "main/list.html", {"ls":ls})
     return render(response, "main/view.html", {})
 
@@ -52,4 +57,6 @@ def create(response): #form page
     return render(response, "main/create.html", {"form":form})
 
 def view(response):
+
+    
     return render(response, "main/view.html", {})
