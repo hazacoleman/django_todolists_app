@@ -16,7 +16,11 @@
                 {% endif %}
                 </div>
             </div>
-            <input type="text", value="{{item.text}}" class="form-control">
+            {% if item.complete == True %}
+            <input type="text", value="{{item.text}}" class="form-control" style="color:#969696;">
+            {% else %}
+            <input type="text", value="{{item.text}}" class="form-control" style="font-weight:bold;">
+            {% endif %}
         </div>
         {% endfor %}
         
@@ -24,14 +28,23 @@
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <button type="submit", name="newItem", value="newItem", class="btn btn-info">Add Item</button>
+            
+            
             <input type="text", name="new">
+            
         </div>
         
     </div>
-    <div>
-        <button type="submit", name="save", value="save" class="btn btn-success">Save</button>
-        <button type="submit", name="clear", value="clear" class="btn btn-danger">Clear All</button>
+   
+            <button type="submit", name="save", value="save" class="btn btn-success">Save</button>
+            <button type="submit", name="clear", value="clear" class="btn btn-danger">Clear All Items</button>
+            <button type="submit", name="delete", value="delete" class="btn btn-danger btn-sm">Delete Entire To Do List</button>
+        
+        
     </div>
     
+    <div>
+        
+    </div>
     </form>
 {% endblock %} 
